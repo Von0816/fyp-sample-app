@@ -1,0 +1,23 @@
+spring:
+  profile:
+    active: dev
+  application:
+    name: messaging-service
+  cloud:
+    config:
+      name: messaging-service
+  config:
+    import: "optional:configserver:"
+  mail:
+    host: smtp.zoho.com
+    port: 587
+    protocol: smtp
+    default-encoding: UTF-8
+    username: no-reply@afroinsight.com
+    password: sss
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true

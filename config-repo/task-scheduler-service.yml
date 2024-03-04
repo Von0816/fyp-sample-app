@@ -1,0 +1,47 @@
+server:
+  port: 7093
+  servlet:
+    context-path: /task-scheduler-service
+app:
+  dbHostName: localhost
+  dbPort: 3306
+  dbUsername: root
+  dbPassword: #enter mysql db password
+  dbName: task_scheduler
+  keycloak:
+    realm: spring-boot-kc
+    domain: 127.0.0.1:8081
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://${app.keycloak.domain}/realms/${app.keycloak.realm}
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${app.dbHostName}:${app.dbPort}/${app.dbName}?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=Europe/Rome&autoReconnect=true
+    username: ${app.dbUsername}
+    password: ${app.dbPassword}
+    testWhileIdle: true
+    validationQuery: SELECT 1
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    database: mysql
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        storage_engine: innodb
+jwt:
+  auth:
+    converter:
+      resource-id: authenticationClientId
+nflow:
+  db:
+    mysql:
+      driver: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://${app.dbHostName}:${app.dbPort}/${app.dbName}?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=Europe/Rome&autoReconnect=true
+      user: ${app.dbUsername}
+      password: ${app.dbPassword}

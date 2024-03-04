@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Email Conformation</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- use the font -->
+    <style>
+        /*******************************
+    Mini Reset
+*******************************/
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        *,
+        *:after,
+        *:before {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css?family=Lato');
+
+        body {
+            font-size: 62.5%;
+            font-family: 'Lato', sans-serif;
+            color: #222222;
+            background-color: white;
+            height: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        strong {
+            font-weight: 700;
+        }
+
+        a,
+        a:hover,
+        a:focus {
+            color: #222222;
+            font-weight: 600;
+            text-decoration: underline;
+            text-decoration: none;
+            -o-transition: all .3s;
+            -moz-transition: all .3s;
+            -webkit-transition: all .3s;
+            -ms-transition: all .3s;
+            transition: all .3s;
+        }
+
+        img {
+            /* display: block; */
+            max-width: 100%;
+            height: auto;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            line-height: 1.8em;
+            color: #222222;
+        }
+
+        h2 {
+            font-size: 2em;
+            line-height: 2em;
+            color: #222222;
+        }
+
+        p {
+            font-size: 1.8em;
+            line-height: 1.5em;
+            margin: 0 0 20px 0;
+        }
+
+        header {
+            background: #f0f0f0;
+        }
+
+        header img {
+            padding: 25px 2% 25px 2%;
+        }
+
+        footer {
+            background: #222222;
+        }
+
+        footer p {
+            padding: 25px 0 10px 0;
+            color: white;
+            text-align: center;
+        }
+
+        div.button {
+            margin: 0 0 30px 0;
+        }
+
+        .button a {
+            background: #222222;
+            color: white;
+            font-size: 1.6em;
+            padding: 10px 15px;
+            text-decoration: none;
+            cursor: pointer;
+            -o-transition: all .3s;
+            -moz-transition: all .3s;
+            -webkit-transition: all .3s;
+            -ms-transition: all .3s;
+            transition: all .3s;
+        }
+
+        .button a:hover {
+            background: #222222;
+            color: white;
+        }
+
+        /********************************
+            Backgrounds
+        ********************************/
+        .blue {
+            background: #b5dce5;
+        }
+
+        .grey {
+            background: #f0f0f0;
+        }
+
+        /********************************
+            Responsive Framework
+        ********************************/
+        .content {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            clear: both
+        }
+
+        .content:after {
+            content: "";
+            display: table;
+            clear: both
+        }
+
+        .column {
+            width: 100%;
+            float: left;
+            margin-top: 30px;
+            padding: 0 2% 0 2%;
+            box-sizing: border-box
+        }
+
+        @media (min-width: 769px) {
+            .column {
+                margin-left: 3%
+            }
+
+            .column:first-child {
+                margin-left: 0
+            }
+
+            .quarter {
+                width: 22.75%;
+            }
+
+            .third {
+                width: 31.3333333333%
+            }
+
+            .two-thirds {
+                width: 65.6666666667%
+            }
+
+            .half {
+                width: 48.5%
+            }
+        }
+    </style>
+</head>
+<body>
+<header class="content">
+    <img src="logo.png" th:src="|cid:${logo}|" alt="Bisky Music" width="200px" height="200px"/>
+</header>
+
+
+<article class="content grey">
+    <section class="column two-thirds">
+        <p th:text=" ${'You got a new comment from ' + name + ' on the song titled '+ songTitle}"></p>
+        <p th:text=" ${comment}"></p>
+        <p>Sincerely,
+            <br/>
+            Bisky Music Team
+        </p>
+    </section>
+</article>
+
+<footer class="content">
+    <p>&copy;
+        Copyright © 2023 Bisky Music, All rights reserved.
+    </p>
+</footer>
+
+</body>
+</html>

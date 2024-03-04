@@ -1,0 +1,38 @@
+server:
+  port: 9067
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: auth-route
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+        - id: user-route
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**
+        - id: music-route
+          uri: lb://music-service
+          predicates:
+            - Path=/music/**
+        - id: music-route
+          uri: lb://messaging-service
+          predicates:
+            - Path=/messaging/**
+        - id: music-route
+          uri: lb://task-scheduler-service
+          predicates:
+            - Path=/task-scheduler/**
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    gateway:
+      enabled: true

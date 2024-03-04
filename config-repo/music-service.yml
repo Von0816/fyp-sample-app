@@ -1,0 +1,24 @@
+server:
+  port: 7091
+  servlet:
+    context-path: /music
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://${app.keycloak.domain}/realms/${app.keycloak.realm}
+  neo4j:
+    uri: #enter neo4j uri
+    authentication:
+      username: neo4j
+      password: #enter neo4j workspace password
+jwt:
+  auth:
+    converter:
+      resource-id: authenticationClientId
+app:
+  keycloak:
+    realm: spring-boot-kc
+    domain: 127.0.0.1:8081
+
